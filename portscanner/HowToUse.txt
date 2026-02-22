@@ -1,0 +1,25 @@
+Feature                 Result
+
+Target		        CLI argument + hostname resolution
+Port range       	Flexible: -p 80, -p 1-65535, -p 22,80,443
+Threads		        Configurable: -t 200 (default 100)
+Timeout		        Configurable: --timeout 2
+Service detection	Identifies services (SSH, HTTP, MySQL, etc.)
+Banner grabbing		Grabs server banners (disable with --no-banner)
+Thread safety		Proper threading.Lock
+Error handling		Specific exceptions caught
+Progress		Live progress bar
+Output	         	Formatted table with scan report
+Ctrl + C	        Graceful exit
+
+
+
+Usage Examples:
+
+python scanner.py "192.168.1.1" (target IP)        # Scan default ports 1-1024
+
+python scanner.py scanme.nmap.org -p 22,80,443     # Scan specific ports
+
+python scanner.py 10.0.0.1 -p 1-65535 -t 200       # Full scan, 200 threads
+
+python scanner.py 192.168.1.1 --no-banner          # Skip banner grab (faster)
